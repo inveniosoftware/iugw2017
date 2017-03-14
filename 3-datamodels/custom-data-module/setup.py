@@ -94,6 +94,26 @@ setup(
         'invenio_i18n.translations': [
             'messages = custom_data_module',
         ],
+        'invenio_jsonschemas.schemas': [
+            'record_jsonschemas = custom_data_module.jsonschemas',
+        ],
+        'invenio_search.mappings': [
+            'custom_record = custom_data_module.mappings',
+        ],
+        'flask.commands': [
+            'custom_demo = custom_data_module.cli:custom_demo',
+        ],
+        'invenio_records.jsonresolver': [
+            'all_records = custom_data_module.jsonresolver',
+        ],
+        'invenio_pidstore.fetchers': [
+            'custid'
+            '= custom_data_module.fetchers:custom_record_fetcher',
+        ],
+        'invenio_pidstore.minters': [
+            'custid'
+            '= custom_data_module.minters:custom_record_minter',
+        ],
     },
     extras_require=extras_require,
     install_requires=install_requires,

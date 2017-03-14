@@ -1,0 +1,26 @@
+{
+    "mappings": {
+        "custom-record-v1.0.0": {
+            "_all": {
+                "analyzer": "english"
+            },
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "analyzer": "english"
+                },
+                "description": {
+                    "type": "string",
+                    "analyzer": "english"
+                },
+                "references": {
+                    "type": "string"
+                },
+                "custom_pid": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                }
+            }
+        }
+    }
+}
