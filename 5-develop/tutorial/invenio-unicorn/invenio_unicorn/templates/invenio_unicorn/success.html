@@ -1,0 +1,17 @@
+{%- extends config.BASE_TEMPLATE %}
+
+{% block page_body %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success">
+          <b>Success!</b>
+        </div>
+        <a href="{{ url_for('invenio_unicorn.create') }}" class="btn btn-warning">Create more</a>
+        <center>
+          <iframe src="//giphy.com/embed/WZmgVLMt7mp44" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/kawaii-colorful-unicorn-WZmgVLMt7mp44">via GIPHY</a></p>
+        </center>
+      </div>
+    </div>
+  </div>
+{% endblock page_body %}
