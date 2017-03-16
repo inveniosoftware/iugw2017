@@ -1,0 +1,7 @@
+<ol>
+  <li ng-repeat="record in vm.invenioSearchResults.hits.hits track by $index">
+      <span class="label label-success">{{ record.metadata.language_code[0].language_code_of_text_sound_track_or_separate_title[0] }}</span>
+    <h4><a target="_self" ng-href="/records/{{ record.id }}">{{ record.metadata.title_statement.title }}</a></h4>
+    <p>{{ record.metadata.summary[0].summary }}</p>
+  </li>
+</ol>
