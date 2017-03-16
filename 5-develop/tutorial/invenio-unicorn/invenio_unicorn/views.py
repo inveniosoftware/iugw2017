@@ -24,12 +24,9 @@
 
 """Invenio module that adds more fun to the platform."""
 
-# TODO: This is an example file. Remove it if you do not need it, including
-# the templates and static folders as well as the test case.
-
 from __future__ import absolute_import, print_function
 
-from flask import Blueprint, render_template, redirect, request, url_for
+from flask import Blueprint, redirect, render_template, request, url_for
 from flask_babelex import gettext as _
 
 from .forms import RecordForm
@@ -43,20 +40,28 @@ blueprint = Blueprint(
 )
 
 
+@blueprint.route("/")
+def index():
+    """Basic view."""
+    return render_template(
+        "invenio_unicorn/index.html",
+        module_name=_('Invenio-Unicorn'))
+
+
 @blueprint.route('/create', methods=['GET', 'POST'])
 def create():
     """The index view."""
     form = RecordForm()
-    # If the form is valid
+    # if the form is valid
     if form.validate_on_submit():
-        # Create the record
+        # create the record
         create_record(
           dict(
             title=form.title.data,
             description=form.description.data
           )
         )
-        # Redirect to the success page
+        # redirect to the success page
         return redirect(url_for('invenio_unicorn.success'))
     return render_template('invenio_unicorn/create.html', form=form)
 
