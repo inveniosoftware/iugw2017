@@ -40,16 +40,6 @@ Requirements
 Before starting let's make sure we have ``custom-data-module`` installed on
 your environment. We need that to ensure that we have the data model.
 
-How to do that?
-
-.. code-block:: console
-
-  $ cd custom-data-module
-  $ pip install .
-  $ invenio custom_demo init
-
-And restart your server
-
 1. Create the form
 ^^^^^^^^^^^^^^^^^^
 
@@ -70,6 +60,7 @@ in ``invenio_unicorn/forms.py``
 
 
     class RecordForm(FlaskForm):
+        """Custom record form."""
 
         title = StringField(
             'Title', [validators.DataRequired()]
@@ -90,27 +81,9 @@ The ``views.py`` registers all the views of our application
 
 .. code-block:: python
 
-    """Invenio module that adds more fun to the platform."""
-
-    from __future__ import absolute_import, print_function
-
-    from flask import Blueprint, render_template, redirect, request, url_for
-    from flask_babelex import gettext as _
-
-    from .forms import RecordForm
-    from .utils import create_record
-
-    blueprint = Blueprint(
-        'invenio_unicorn',
-        __name__,
-        template_folder='templates',
-        static_folder='static',
-    )
-
-
     @blueprint.route('/create', methods=['GET', 'POST'])
     def create():
-        """The index view."""
+        """The create view."""
         form = RecordForm()
         # if the form is valid
         if form.validate_on_submit():
@@ -298,9 +271,13 @@ On the ``utils.py`` module will create a helper function that creates a record.
 
 5. Demo time
 ^^^^^^^^^^^^
-Make sure you have restarted your server.
+Let's start our server again.
 
-Then go to ``http://localhost:5000/create`` and you will see the form we just
+.. code-block:: console
+
+    vagrant> invenio run -h 0.0.0.0
+
+Then go to ``http://192.168.50.10/create`` and you will see the form we just
 created. There are two fields ``Title`` and ``Description``.
 
 Let's try the form, add something to the ``Title`` and click submit, you will

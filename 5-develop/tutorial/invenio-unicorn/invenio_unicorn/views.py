@@ -50,7 +50,7 @@ def index():
 
 @blueprint.route('/create', methods=['GET', 'POST'])
 def create():
-    """The index view."""
+    """The create view."""
     form = RecordForm()
     # if the form is valid
     if form.validate_on_submit():
