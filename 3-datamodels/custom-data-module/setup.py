@@ -32,6 +32,7 @@ setup(
     name='custom-data-module',
     version=0.1,
     packages=packages,
+    include_package_data=True,
     entry_points={
         'invenio_jsonschemas.schemas': [
             'record_jsonschemas = custom_data_module.jsonschemas',
