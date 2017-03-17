@@ -327,5 +327,6 @@ Everything together
 You want to see the results? Just run the following command.
 
 .. code-block:: console
+
     vagrant> cd /vagrant/iugw2017/2-customization
     vagrant> cat final.cfg >> ~/.virtualenvs/invenio/var/instance/invenio.cfg
