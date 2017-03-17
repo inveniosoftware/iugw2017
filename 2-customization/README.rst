@@ -34,7 +34,6 @@ First go in the virtual machine:
 .. code-block:: console
 
     laptop> vagrant ssh web
-    vagrant> source .inveniorc
     vagrant> workon invenio
 
 
@@ -53,14 +52,13 @@ Customize
 If you go to ``http://192.168.50.10/``, you will see the default Invenio,
 but how we can customize it? Let's first stop invenio server.
 
-Open with your favorite editor
-``/vagrant/2-customization/invenio-beauty/invenio_beauty/config.py``
+Open with your favorite editor the ``~/.virtualenvs/invenio/var/instance/invenio.cfg``
 
 1. Modify the logo
 ^^^^^^^^^^^^^^^^^^
 Let's make our theme beautiful by replacing the logo
 
-in the ``/vagrant/2-customization/invenio-beauty/invenio_beauty/config.py``
+in the ``~/.virtualenvs/invenio/var/instance/invenio.cfg`` add the following:
 
 .. code-block:: python
 
@@ -82,9 +80,11 @@ page title.
 Let's replace the facets with the ``Authors`` adding the field
 ``main_entry_personal_name.personal_name``
 
-in the ``/vagrant/2-customization/invenio-beauty/invenio_beauty/config.py``
+in the ``~/.virtualenvs/invenio/var/instance/invenio.cfg`` add the following:
 
 .. code-block:: python
+
+    from invenio_records_rest.facets import terms_filter
 
     RECORDS_REST_FACETS = {
       'marc21': {
@@ -94,6 +94,9 @@ in the ``/vagrant/2-customization/invenio-beauty/invenio_beauty/config.py``
               'field': 'main_entry_personal_name.personal_name'
             }
           }
+        },
+        'post_filters': {
+          'author': terms_filter('main_entry_personal_name.personal_name')
         }
       }
     }
@@ -110,7 +113,7 @@ have been replaced with the ``Authors``.
 3. Add sort options
 ^^^^^^^^^^^^^^^^^^^
 
-in the ``/vagrant/2-customization/invenio-beauty/invenio_beauty/config.py``
+in the ``~/.virtualenvs/invenio/var/instance/invenio.cfg`` add the following:
 
 .. code-block:: python
 
@@ -194,7 +197,7 @@ in the ``/vagrant/2-customization/invenio-beauty/invenio_beauty/templates/detail
 
 
 
-in the ``/vagrant/2-customization/invenio-beauty/invenio_beauty/config.py``
+in the ``~/.virtualenvs/invenio/var/instance/invenio.cfg`` add the following:
 
 .. code-block:: python
 
@@ -251,7 +254,7 @@ you can use ``{{ record.metadata.foo }}``.
 Now in the search results template, we will display the language tag on top of each record
 ``language_code``.
 
-in the ``/vagrant/2-customization/invenio-beauty/invenio_beauty/config.py``
+in the ``~/.virtualenvs/invenio/var/instance/invenio.cfg`` add the following:
 
 .. code-block:: python
 
@@ -303,7 +306,7 @@ display the ``THEME_FRONTPAGE_TITLE`` we can you ``config.THEME_FRONTPAGE_TITLE`
 
 So the only thing we should do is to edit the ``config.py``
 
-in the ``/vagrant/2-customization/invenio-beauty/invenio_beauty/config.py``
+in the ``~/.virtualenvs/invenio/var/instance/invenio.cfg`` add the following:
 
 .. code-block:: python
 
@@ -324,5 +327,5 @@ Everything together
 You want to see the results? Just run the following command.
 
 .. code-block:: console
-
+    vagrant> cd /vagrant/iugw2017/2-customization
     vagrant> cat final.cfg >> ~/.virtualenvs/invenio/var/instance/invenio.cfg
