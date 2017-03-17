@@ -269,8 +269,9 @@ On the ``utils.py`` module will create a helper function that creates a record.
             indexer.index(created_record)
         db.session.commit()
 
-5. Demo time
-^^^^^^^^^^^^
+Demo time
+---------
+
 Let's start our server again.
 
 .. code-block:: console
