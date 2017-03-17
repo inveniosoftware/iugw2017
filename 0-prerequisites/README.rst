@@ -55,9 +55,10 @@ You can use your USB stick:
 
 .. code-block:: console
 
-   $ vagrant box add -n iugw2017-base-web /dev/sdb1/iugw2017-base-web.box
-   $ vagrant box add -n iugw2017-demosite-web /dev/sdb1/iugw2017-demosite-web.box
-   $ vagrant box add -n iugw2017-demositewithcustomdata-web /dev/sdb1/iugw2017-demositewithcustomdata-web.box
+   $ sudo mount /dev/sdb1 /mnt
+   $ vagrant box add -n iugw2017-base-web /mnt/iugw2017-base-web.box
+   $ vagrant box add -n iugw2017-demosite-web /mnt/iugw2017-demosite-web.box
+   $ vagrant box add -n iugw2017-demositewithcustomdata-web /mnt/iugw2017-demositewithcustomdata-web.box
 
 You can also download the boxes via web. Note that there is about 2.6 GB to
 transfer:
@@ -97,7 +98,7 @@ and copy the tutorial sources from the USB key:
 
 .. code-block:: console
 
-   $ cp -a /dev/sdb1/iugw2017 .
+   $ cp -a /mnt/iugw2017 .
    $ cd iugw2017
 
 or clone them from GitHub:
