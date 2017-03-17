@@ -21,9 +21,9 @@
     waive the privileges and immunities granted to it by virtue of its status
     as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-====================
- Custom-Data-Module
-====================
+============================
+ Part 3: Custom-Data-Module
+============================
 
 The goal of this module is to show the different aspects of Invenio's
 datamodel.
