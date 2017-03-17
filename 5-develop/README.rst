@@ -81,6 +81,32 @@ The ``views.py`` registers all the views of our application
 
 .. code-block:: python
 
+    """Invenio module that adds more fun to the platform."""
+    
+    from __future__ import absolute_import, print_function
+
+    from flask import Blueprint, redirect, render_template, request, url_for
+    from flask_babelex import gettext as _
+
+    from .forms import RecordForm
+    from .utils import create_record
+
+    blueprint = Blueprint(
+        'invenio_unicorn',
+        __name__,
+        template_folder='templates',
+        static_folder='static',
+    )
+
+
+    @blueprint.route("/")
+    def index():
+        """Basic view."""
+        return render_template(
+            "invenio_unicorn/index.html",
+            module_name=_('Invenio-Unicorn'))
+
+
     @blueprint.route('/create', methods=['GET', 'POST'])
     def create():
         """The create view."""
@@ -103,6 +129,7 @@ The ``views.py`` registers all the views of our application
     def success():
         """The success view."""
         return render_template('invenio_unicorn/success.html')
+
 
 3. Create the templates
 ^^^^^^^^^^^^^^^^^^^^^^^
