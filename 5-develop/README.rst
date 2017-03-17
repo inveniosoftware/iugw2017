@@ -21,7 +21,7 @@
     waive the privileges and immunities granted to it by virtue of its status
     as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-Part 3: Develop a module
+Part 5: Develop a module
 ========================
 
 The goal of this tutorial is to add data to Invenio v3. We'll create a
