@@ -25,7 +25,8 @@
  Custom-Data-Module
 ====================
 
-The goal of this module is to show the different aspect of Invenio's datamodel.
+The goal of this module is to show the different aspects of Invenio's
+datamodel.
 
 Install
 -------
@@ -35,7 +36,6 @@ First go in the virtual machine:
 .. code-block:: console
 
     laptop> vagrant ssh web
-    vagrant> source .inveniorc
     vagrant> workon invenio
 
 First install the module.
@@ -97,7 +97,7 @@ Tutorial:
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Read `Invenio documentation about data models
-<http://invenio.readthedocs.io/en/feature-ils/developersguide/create-a-datamodel.html>`_
+<http://invenio.readthedocs.io/en/iugw2017/developersguide/create-a-datamodel.html>`_
 which explains how Invenio stores records.
 
 
@@ -135,7 +135,7 @@ Go to:
 http://192.168.50.10/records/1
 
 This records uses a numeric persistent identifier "1". It can be seen under
-*contro_number*. It is also present in the URI of the record.
+*control number*. It is also present in the URI of the record.
 
 See how the URI is different from our custom record. Invenio gives access
 to records via their persistent identifier. Multiple **Persistent Identifier
@@ -180,7 +180,7 @@ and
 http://192.168.50.10/api/custom_records/custom_pid_1
 
 You might have noticed that the record returned by the REST API has some
-additional information we didn't see in the User Interface. It has
+additional information we didn't see in the User Interface: it has
 some links.
 
 Invenio enables to change the way a record is exposed to the outside world.
@@ -204,7 +204,7 @@ Run the following command on your laptop:
 The result just shows the title as plain text. The serializer which creates
 this result is here:
 
-custom_data_module/serializers.py
+**custom_data_module/serializers.py**
 
 The function *plain_text_serializer* just takes the title and returns it.
 
@@ -216,9 +216,9 @@ Go to:
 
 http://192.168.50.10/api/custom_records/
 
-We just did a search request. The *hits* array contain a list of found records.
-As we didn't filter the query, this shows the two records we created at the
-beginning.
+We just did a search request. The *hits* array contains the list of records
+which match the query. As our query is empty, the two records we created at
+the beginning are returned.
 
 Now we will ask for records matching the query "references". Go to:
 
@@ -237,7 +237,7 @@ Now we will ask for records matching the query "refer". Go to:
 
 http://192.168.50.10/api/custom_records/?q=refer
 
-The second record is still return even though it does not contain the word
+The second record is still returned even though it does not contain the word
 "refer". This is possible because we asked our search engine to analyze the
 text as "english".
 
@@ -245,8 +245,8 @@ Open the file:
 
 **custom_data_module/mappings/custom_record/custom-record-v1.0.0.json**
 
-This is the Elasticearch Mapping which enables to tell our search engine
-how to analyze the text. You can go see Elasticsearch documentation
+This is the **Elasticsearch mapping** file. It tells our search engine
+how to analyze records' fields. You can go see Elasticsearch documentation
 for more information about mappings files.
 
 This is also why we had to recreate the search indices at the beginning of
